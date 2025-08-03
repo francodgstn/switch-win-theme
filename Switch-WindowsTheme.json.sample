@@ -1,0 +1,26 @@
+{
+  "DefaultDayTheme": "Light",
+  "DefaultNightTheme": "Dark",
+  "DefaultDayAccent": "Blue",
+  "DefaultNightAccent": "Blue",
+  "DefaultLightWallpaper": "",
+  "DefaultDarkWallpaper": "",
+  "Schedules": [
+    {
+      "Name": "Day",
+      "Time": "07:00",
+      "Theme": "Light",
+      "AccentColor": "Blue",
+      "Wallpaper": "",
+      "Enabled": true
+    },
+    {
+      "Name": "Night",
+      "Time": "20:00",
+      "Theme": "Dark",
+      "AccentColor": "Blue",
+      "Wallpaper": "",
+      "Enabled": true
+    },
+  ]
+}

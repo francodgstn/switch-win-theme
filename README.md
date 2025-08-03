@@ -1,0 +1,85 @@
+# Windows Theme Switcher
+
+A PowerShell script to automatically switch between Windows Light/Dark themes, change accent colors, and set wallpapers on a schedule.
+
+## Quick Start
+
+```powershell
+# Toggle between light and dark mode
+.\Switch-WindowsTheme.ps1 -Mode Toggle
+
+# Set dark mode with purple accent
+.\Switch-WindowsTheme.ps1 -Mode Dark -AccentColor Purple
+
+# Setup automatic theme switching
+.\Switch-WindowsTheme.ps1 -SetupSchedule
+```
+
+## Features
+
+- **Theme Switching**: Light/Dark mode toggle
+- **Accent Colors**: 9 built-in colors (Red, Orange, Yellow, Green, Cyan, Blue, Purple, Pink, Default)
+- **Wallpaper Management**: Automatic wallpaper switching with themes
+- **Scheduled Tasks**: Automatic theme switching at specified times
+- **Fast Refresh**: API-based theme switching (no Explorer restart by default)
+
+## Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| `-Mode` | Light, Dark, or Toggle |
+| `-AccentColor` | Color name from available list |
+| `-Wallpaper` | Path to wallpaper image |
+| `-SetupSchedule` | Create scheduled tasks |
+| `-RemoveSchedule` | Remove all scheduled tasks |
+| `-RestartExplorer` | Force Explorer restart for complete refresh |
+| `-ConfigFile` | Custom config file path |
+
+## Configuration
+
+Edit `Switch-WindowsTheme.json` to customize:
+
+```json
+{
+  "DefaultLightWallpaper": "C:\\path\\to\\light-bg.jpg",
+  "DefaultDarkWallpaper": "C:\\path\\to\\dark-bg.jpg",
+  "Schedules": [
+    {
+      "Name": "Morning",
+      "Time": "07:00",
+      "Theme": "Light",
+      "AccentColor": "Blue",
+      "Enabled": true
+    }
+  ]
+}
+```
+
+## Examples
+
+```powershell
+# Basic usage
+.\Switch-WindowsTheme.ps1 -Mode Dark
+.\Switch-WindowsTheme.ps1 -AccentColor Purple
+.\Switch-WindowsTheme.ps1 -Wallpaper "C:\bg.jpg"
+
+# With complete refresh (if taskbar doesn't update)
+.\Switch-WindowsTheme.ps1 -Mode Toggle -RestartExplorer
+
+# Schedule management
+.\Switch-WindowsTheme.ps1 -SetupSchedule    # Create tasks
+.\Switch-WindowsTheme.ps1 -RemoveSchedule   # Remove tasks
+```
+
+## Requirements
+
+- Windows 10/11
+- PowerShell 5.1 or later
+- Administrator privileges for scheduled tasks
+
+## Notes
+
+- By default, uses fast API calls for theme switching
+- Use `-RestartExplorer` if taskbar doesn't refresh properly
+- Supported wallpaper formats: JPG, PNG, BMP
+- Scheduled tasks run with hidden windows

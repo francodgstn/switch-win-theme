@@ -1,0 +1,59 @@
+# PowerShell
+*.ps1xml
+*.psd1
+*.psm1
+*.dll
+*.exe
+*.log
+*.tmp
+
+# User-specific files
+*.user
+*.suo
+*.cache
+*.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.vs/
+*.swp
+*.swo
+*~
+
+# PowerShell specific
+profile.ps1
+Microsoft.PowerShell_profile.ps1
+
+# Runtime files
+*.pid
+*.seed
+*.pid.lock
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Personal configuration files that might contain sensitive paths
+*-personal.json
+*-local.json
+config-*.json
+Switch-WindowsTheme.json
+!*.sample
+
+# Backup files
+*.bak
+*.backup
+*.old
