@@ -2,6 +2,14 @@
 
 A PowerShell script to automatically switch between Windows Light/Dark themes, change accent colors, and set wallpapers on a schedule.
 
+
+## Requirements
+
+- Windows 10/11
+- PowerShell 7 or later ([Installing PowerShell ](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows))
+- Administrator privileges for scheduled tasks
+
+
 ## Quick Start
 
 ```powershell
@@ -10,6 +18,9 @@ A PowerShell script to automatically switch between Windows Light/Dark themes, c
 
 # Set dark mode with purple accent
 .\Switch-WindowsTheme.ps1 -Mode Dark -AccentColor Purple
+
+# Force restart explorer 
+.\Switch-WindowsTheme.ps1 -Mode Dark -RestartExplorer
 
 # Setup automatic theme switching
 .\Switch-WindowsTheme.ps1 -SetupSchedule
@@ -20,7 +31,7 @@ A PowerShell script to automatically switch between Windows Light/Dark themes, c
 - **Theme Switching**: Light/Dark mode toggle
 - **Accent Colors**: 9 built-in colors (Red, Orange, Yellow, Green, Cyan, Blue, Purple, Pink, Default)
 - **Wallpaper Management**: Automatic wallpaper switching with themes
-- **Scheduled Tasks**: Automatic theme switching at specified times
+- **Scheduled Tasks**: Automatic theme switching at specified times 
 - **Fast Refresh**: API-based theme switching (no Explorer restart by default)
 
 ## Parameters
@@ -41,18 +52,32 @@ Edit `Switch-WindowsTheme.json` to customize:
 
 ```json
 {
+  "DefaultDayTheme": "Light",
+  "DefaultNightTheme": "Dark",
+  "DefaultDayAccent": "Blue",
+  "DefaultNightAccent": "Blue",
   "DefaultLightWallpaper": "C:\\path\\to\\light-bg.jpg",
   "DefaultDarkWallpaper": "C:\\path\\to\\dark-bg.jpg",
   "Schedules": [
     {
-      "Name": "Morning",
+      "Name": "Day",
       "Time": "07:00",
       "Theme": "Light",
       "AccentColor": "Blue",
+      "Wallpaper": "C:\\path\\to\\light-bg.jpg",
+      "Enabled": true
+    },
+    {
+      "Name": "Night",
+      "Time": "20:00",
+      "Theme": "Dark",
+      "AccentColor": "Blue",
+      "Wallpaper": "C:\\path\\to\\dark-bg.jpg",
       "Enabled": true
     }
   ]
 }
+
 ```
 
 ## Examples
@@ -71,15 +96,14 @@ Edit `Switch-WindowsTheme.json` to customize:
 .\Switch-WindowsTheme.ps1 -RemoveSchedule   # Remove tasks
 ```
 
-## Requirements
+## Notes & Troubleshooting
 
-- Windows 10/11
-- PowerShell 5.1 or later
-- Administrator privileges for scheduled tasks
+- ❌ Taskbar doesn't refresh properly 👉 Use `-RestartExplorer` 
 
-## Notes
+- ❌ Errors like `statement is missing catch` or `Missing closing '}'` 👉 Update powershell 
 
-- By default, uses fast API calls for theme switching
-- Use `-RestartExplorer` if taskbar doesn't refresh properly
-- Supported wallpaper formats: JPG, PNG, BMP
 - Scheduled tasks run with hidden windows
+
+## TODO
+
+Clean up unnecessary code. 
